@@ -1,0 +1,11 @@
+- Adicionar todas as novidades/códigos/arquivos feitos
+git add *
+
+- Configurar usuário que vai enviar o código
+git config user.email "rafael.zottesso@ifpr.edu.br"
+
+- Efetivar uma alteração/versão
+git commit -am "Mensagem sobre o commit."
+
+- Enviar o código para o GitHub (nuvens)
+git push origin master
