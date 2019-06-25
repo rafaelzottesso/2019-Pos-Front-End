@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Aula 03 - Introdução jQuery</title>
+
+    <script src="js/jquery-3.4.1.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+
+    <script>
+    // Criação de um evento para quando o documento estiver pronto
+    $(document).ready(function(){
+
+        // Evento para quando clicar num botão
+        $("#esconder").click(function(){
+            // Ação a ser executada
+            $(".abas").hide();
+        }); // fim do click
+
+        // Evento para quando clicar num botão
+        $("#mostrar").click(function(){
+            // Ação a ser executada
+            $(".abas").fadeIn();
+        }); // fim do click
+
+        // Evento para quando clicar num botão
+        $(".btnAba1").click(function(){
+            // Ação a ser executada
+            $(".abas").hide();
+            $(".aba1").fadeIn();
+        }); // fim do click
+
+
+    }); // fim do ready
+
+    </script>
+
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1>Introdução ao jQuery</h1>
+
+        <button class="btn btn-primary btnAba1">Aba 1</button>
+        <button class="btn btn-primary btnAba2">Aba 2</button>
+        <button class="btn btn-primary btnAba3">Aba 3</button>
+
+        <button id="mostrar" class="btn btn-success">Mostrar todos</button>
+        <button id="esconder" class="btn btn-warning">Esconder todos</button>
+
+        <br>
+
+        <div class="abas aba1">
+            Rafael Henrique Dalegrave Zottesso
+        </div>
+
+        <div class="abas aba2">
+            rafael.zottesso@ifpr.edu.br
+        </div>
+
+        <div class="abas aba3">
+            Professor no IFPR Campus Paranavaí
+        </div>
+
+    </div>
+
+</body>
+</html>
