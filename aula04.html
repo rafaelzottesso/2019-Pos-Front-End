@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,30 +10,73 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
 
-    <script src="js/jquery-3.4.1.js"></script>
-    <script>
-    $(document).ready(function(){
 
-        alert("Ok!");
-
-    });
-    </script>
 </head>
+
 <body>
 
-    <div class="container">
-
+    <div class="container py-3">
         <div class="row">
 
-            <div class="col-md">
+            <div class="col-md-6 mx-auto">
 
-                <h3>jQuery com Formulários</h3>
+                <h3 class="border-bottom pb-2">jQuery com Formulários</h3>
+
+                <form action="" method="get">
+
+                    <label for="">Nome:</label>
+                    <input type="text" name="nome" class="form-control">
+
+                    <br>
+
+                    <label for="">E-mail:</label>
+                    <input type="email" name="email" class="form-control">
+
+                    <br>
+
+                    <label for="">Data de Nascimento:</label>
+                    <input type="date" name="nascimento" class="form-control">
+
+                    <br>
+
+                    <label for="">Senha:</label>
+                    <input type="password" name="senha" class="form-control">
+
+                    <br>
+
+                    <label for="">Repetir Senha:</label>
+                    <input type="password" name="rep_senha" class="form-control">
+
+                    <br>
+
+                    <button type="button" class="btn btn-success" id="btn-enviar">Cadastrar</button>
+                    <button type="button" class="btn btn-secondary" id="btn-voltar">Voltar</button>
+
+                </form>
 
             </div>
 
         </div>
 
     </div>
-    
+
+
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        // Quanto o documento estiver pronto...
+        $(document).ready(function () {
+
+            // Evento de click no botão com id btn-enviar
+            $("#btn-enviar").click(function(){
+                
+                alert( $(".row").html("<h1>oi</h1>") );
+                //var senha = $("input[name=senha]").val();
+
+            });
+
+        });
+    </script>
+
 </body>
+
 </html>
