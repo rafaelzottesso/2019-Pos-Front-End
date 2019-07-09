@@ -69,11 +69,34 @@
             // Evento de click no botão com id btn-enviar
             $("#btn-enviar").click(function(){
                 
-                alert( $(".row").html("<h1>oi</h1>") );
-                //var senha = $("input[name=senha]").val();
+                $(this).text("Aguarde....");
+                // $(this).removeClass("btn-success");
+                // $(this).addClass("btn-primary");
+                
+                // .val() pega o valor de algum campo do form
+                var senha = $("input[name=senha]").val();
+                var senha2 = $("input[name=rep_senha]").val();
+                
+                // Verifica se os valores são diferentes
+                if(senha != senha2){
+                    alert("As senhas são diferentes!");
+                    // Da um foco no campo
+                    $("input[name=rep_senha]").focus();
+                    // Adiciona uma classe
+                    $("input[name=rep_senha]").addClass("border-danger");
+                    $("input[name=senha]").addClass("border-danger");
 
+                // Se os valores forem iguais...
+                } else{
+                    // Remove a classe "border-danger" se tiver
+                    // Se não tiver, o jQuery simplesmente ignora
+                    $("input[name=rep_senha]").removeClass("border-danger");
+                    $("input[name=senha]").removeClass("border-danger");
+                }
+                
+                $(this).text("Cadastrar");
             });
-
+            
         });
     </script>
 
