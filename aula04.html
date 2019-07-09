@@ -22,34 +22,44 @@
 
                 <h3 class="border-bottom pb-2">jQuery com Formulários</h3>
 
+                <!-- Action é o destino dos dados, ex: cadastro.php
+                method é a maneira como os dados são enviados -->
                 <form action="" method="get">
 
                     <label for="">Nome:</label>
-                    <input type="text" name="nome" class="form-control">
-
+                    <input type="text" name="nome" class="form-control obrigatorio">
+                    <span class="text-danger"></span>
+                    
                     <br>
 
                     <label for="">E-mail:</label>
-                    <input type="email" name="email" class="form-control">
+                    <input type="email" name="email" class="form-control obrigatorio">
+                    <span class="text-danger"></span>
 
                     <br>
 
                     <label for="">Data de Nascimento:</label>
-                    <input type="date" name="nascimento" class="form-control">
+                    <input type="date" name="nascimento" class="form-control obrigatorio">
+                    <span class="text-danger"></span>
 
                     <br>
 
                     <label for="">Senha:</label>
-                    <input type="password" name="senha" class="form-control">
-
+                    <input type="password" name="senha" class="form-control obrigatorio">
+                    <span class="text-danger"></span>
+                    
+                    <button id="btn-mostrar" type="button" class="btn btn-sm">Mostrar</button>
+                    
                     <br>
 
                     <label for="">Repetir Senha:</label>
-                    <input type="password" name="rep_senha" class="form-control">
+                    <input type="password" name="rep_senha" class="form-control obrigatorio">
+                    <span class="text-danger"></span>
 
                     <br>
 
-                    <button type="button" class="btn btn-success" id="btn-enviar">Cadastrar</button>
+                    <button type="submit" class="btn btn-primary" >Cadastrar</button>
+                    <button type="button" class="btn btn-success" id="btn-enviar">Verificar Senha</button>
                     <button type="button" class="btn btn-secondary" id="btn-voltar">Voltar</button>
 
                 </form>
@@ -66,12 +76,13 @@
         // Quanto o documento estiver pronto...
         $(document).ready(function () {
 
+
+
             // Evento de click no botão com id btn-enviar
             $("#btn-enviar").click(function(){
                 
+                // Altera o texto do botão
                 $(this).text("Aguarde....");
-                // $(this).removeClass("btn-success");
-                // $(this).addClass("btn-primary");
                 
                 // .val() pega o valor de algum campo do form
                 var senha = $("input[name=senha]").val();
@@ -94,10 +105,77 @@
                     $("input[name=senha]").removeClass("border-danger");
                 }
                 
+                // Altera o texto do botão de novo
                 $(this).text("Cadastrar");
+
+            }); // fecha click enviar
+
+
+
+
+            // Cria outro evento de click
+            $("#btn-mostrar").click(function(){
+                // Pega o texto do botão
+                var texto = $(this).text();
+
+                if(texto == "Mostrar"){
+                    $("input[name=senha]").attr('type',"text");
+                    $(this).text("Esconder");
+                } else {
+                    $("input[name=senha]").attr('type',"password");
+                    $(this).text("Mostrar");
+                }
+                
             });
+
+
+
+
+            // Criar evento de 2 clicks no campo de senha
+            $("input[name=senha]").dblclick(function(){
+
+                // Recebe o valor atual do atributo type
+                var tipo = $(this).attr("type");
+
+                // Se for password
+                if(tipo == "password") {
+                    // Muda pra text
+                    $(this).attr("type", "text");
+                } else {
+                    // Se não, muda pra password
+                    $(this).attr("type", "password");
+                }
+
+            }); // fim dos 2 clicks
+
+
+
+            // Quando o formulário for submetido...
+            $("form").submit(function(evento){
+
+                // Para cada elemento com a classe "obrigatorio"
+                $(".obrigatorio").each(function(){
+                    
+                    // Se o valor do campo for vazio...
+                    if( $(this).val() == "" ){
+                        
+                        // Busca o próximo "span" depois do campo e altera o texto
+                        $(this).next("span").text("Este campo é obrigatório.");
+                        
+                        // Para a submissão do form
+                        evento.preventDefault();
+                    
+                    } else {
+                        // Limpa o texto do span
+                        $(this).next("span").text("");
+                    }
+
+                });
+
+            });
+
             
-        });
+        }); // fecha o ready
     </script>
 
 </body>
