@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aula 05</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+
+    <div class="container py-4">
+
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+
+                <h3>Demais campos de um formulário</h3>
+
+                <form action="" method="GET">
+
+                    
+                    <label for="">Cidade:</label>
+                    <!-- Um select é uma caixa de seleção e possui também um "name" -->
+                    <select name="cidade" class="form-control">
+                        <!-- Cada opção é criada por um "option" que precisar ter um "value"
+                        O valor informado no "value" será recebido no "action" desse formulário
+                        pelo "name" deste campo.
+                        É muito comum colocar o ID do registro no "value" e o nome dele como texto. -->
+                        <option value="">Selecione uma cidade</option>
+                        <option value="1">Paranavaí</option>
+                        <option value="2">Alto Paraná</option>
+                    </select>
+
+                    <br>
+
+                    <label for="">Sexo:</label><br>
+
+                    <!-- O input do tipo "radio" são aquelas bolinhas em que o usuário seleciona apenas uma opção.
+                    Todas as opções do mesmo conjunto tem o mesmo "name" porque só uma delas será selecionada.
+                    Assim como o option, cada radio tem seu value próprio. -->
+
+                    <input type="radio" name="sexo" value="M" id="sexom">
+                    <!-- O label for="idDoRadio" serve para marcar o radio quando clicar na palavra.
+                    Serve para checkbox também. -->
+                    <label for="sexom">Masculino</label>
+
+                    <input type="radio" name="sexo" value="F" id="sexof">
+                    <label for="sexof">Feminino</label>
+
+                    <br><br>
+
+                    <label for="">Interesses</label><br>
+                    <!-- O checkbox tem o mesmo funcionamento do radio, porém pode-se marcar várias opções. Por este motivo,
+                    o name dele tem um [] para gerar uma lista com os values dos itens selecionados. -->
+                    <input type="checkbox" name="interesse[]" value="futebol"> Futebol
+                    <input type="checkbox" name="interesse[]" value="basquete"> Basquete
+                    <input type="checkbox" name="interesse[]" value="volei"> Volei
+                    <input type="checkbox" name="interesse[]" value="handebol"> Handebol
+
+
+                    <button type="submit">Enviar</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>
