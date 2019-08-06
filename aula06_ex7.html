@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Atividade 3 - Exercício 7</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+    $(document).ready(function () {
+       
+        $("#btn-limpar").click(function(){
+            $("#lista").html("");
+        });
+       
+        $("#btn-criar").click(function(){
+            
+            var lista = $("#entrada").val().split(";");
+
+            // A linha acima faz a mesma coisa que a linha abaixo
+            //lista = lista.split(";");
+
+            // Solução 1
+            // var elementos = $("#lista").html();
+
+            $("#lista").html("");
+
+            $.each(lista, function (indice, valor) { 
+
+                if(valor.trim() != "")
+                    $("#lista").append("<li>" + valor + "</li>");
+
+                // Solução 1
+                // elementos = elementos + "<li>" + valor + "</li>";
+                // $("#lista").html(elementos);
+
+            });
+
+        });
+
+    });
+    </script>
+</head>
+<body>
+    
+    <div class="container mt-3">
+
+        <h3 class="my-4 border-bottom">Exercício 7</h3>
+
+        <div class="row">
+            <div class="col-md-6">
+                <textarea id="entrada" rows="5" class="w-100 border p-3"></textarea>
+            </div>
+            <div class="col-md">
+                <button type="button" class="btn btn-primary" id="btn-criar">Criar Lista</button>
+                <button type="button" class="btn btn-danger" id="btn-limpar">Limpar Lista</button>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md">
+                <h5>Resultado</h5>
+                <ul id="lista"></ul>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>
