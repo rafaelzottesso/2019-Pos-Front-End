@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Atividade 3 - Exercício 10</title>
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/font-awesome.css">
+
+  <script src="js/jquery-3.4.1.js"></script>
+  <script>
+    $(document).ready(function () {
+
+      $("#btn-filtrar").click(function () {
+
+        var entrada = $("#entrada").val();
+
+        // Percorrer as "tr" somente que estão dentro do "tbody"
+        $("tbody tr").each(function(){
+          
+          // this = essa linha
+          // pega o texto do primeiro td que é "filho" desta linha
+          var nome = $(this).children("td:first").text();
+
+          // Se o nome tem a entrada
+          if( nome.includes(entrada) ){
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+
+        });
+
+      });
+
+    });
+  </script>
+</head>
+
+<body>
+
+  <div class="container mt-3">
+
+    <h3 class="my-4 border-bottom">Exercício 10</h3>
+
+    <div class="row my-4">
+      <div class="col-md">
+        <input type="text" id="entrada" class="border p-2">
+        <button type="button" class="btn btn-primary" id="btn-filtrar">Filtrar</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md">
+        
+        <table class="table">
+
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Telefone</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Rafael Henrique</td>
+              <td>9912-4567</td>
+              <td>rafael@gmail.com</td>
+            </tr>
+            <tr>
+              <td>Fulano de Tal</td>
+              <td>9912-9876</td>
+              <td>fulano@gmail.com</td>
+            </tr>
+            <tr>
+              <td>Ciclano de Tal</td>
+              <td>9912-1234</td>
+              <td>ciclano@gmail.com</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+</body>
+
+</html>
