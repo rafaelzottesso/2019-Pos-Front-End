@@ -14,6 +14,35 @@
     <script src="js/bootstrap.js"></script>
     <script>
         $(document).ready(function () {
+
+            $("#cep").blur(function (e) { 
+
+                // Usa-se o this porque o elemento que disparou o evento foi o próprio cep
+                var cep = $(this).val();
+                // Formata a URL com o cep
+                var url = "https://viacep.com.br/ws/" + cep + "/json/?callback=?";
+                // Deixa os dados vazios
+                var dados = ""
+
+                // Faz a requisição
+                $.getJSON(url, dados, function (resposta, status) {
+                    // Se existir o campo cep
+                    if(resposta.cep){
+                        // Altera os valores dos campos
+                        $("#cep").val(resposta.cep);
+                        $("#logradouro").val(resposta.logradouro);
+                        $("#bairro").val(resposta.bairro);
+                        $("#cidade").val(resposta.localidade);
+                    } else {
+                        // Se não existir, limpa os campos
+                        $("#logradouro").val("");
+                        $("#bairro").val("");
+                        $("#cidade").val("");
+                    }
+                    
+                });
+
+            });
             
             $("#btn-buscar").click(function () { 
                 
@@ -79,6 +108,30 @@
                         <i class="fa fa-search" aria-hidden="true"></i>
                         Pesquisar
                     </button>
+
+                    <br>
+                    <hr>
+
+                    <div>
+                        <label for="">CEP:</label>
+                        <input type="text" id="cep" class="form-control">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="">Logradouro:</label>
+                        <input type="text" id="logradouro" class="form-control">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="">Bairro:</label>
+                        <input type="text" id="bairro" class="form-control">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="">Cidade:</label>
+                        <input type="text" id="cidade" class="form-control">
+                    </div>
+
 
                 </form>
         
