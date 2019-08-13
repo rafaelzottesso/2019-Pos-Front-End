@@ -27,12 +27,19 @@
                 // url, dados, function(dados, status){} 
                 // A função vai tratar os dados que chegaram, se chegar.
                 // Se não chegar, ela nem é chamada
-                $.get(url, dados, function(dados, status){
+                $.getJSON(url, dados, function(resp, status){
                     // Só executa este código se houver uma resposta do servidor
-                    if(status == "success"){
-                        // A variável dados é responsável por receber tudo que vem da requisição
-                        alert(dados);
-
+                    // Todo código a ser executado fica aqui
+                    
+                    // Se existir uma posição "erro" na resposta...
+                    if(resp.erro){
+                        $("#resultado").html(resp.erro + "<br>");
+                    // Se não...
+                    } else {
+                        // Todo código a ser executado fica aqui
+                        $("#resultado").html(resp.nome + "<br>");
+                        $("#resultado").append(resp.email + "<br>");
+                        $("#resultado").append(resp.telefone + "<br>");
                     }
 
                 });
