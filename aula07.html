@@ -15,7 +15,29 @@
     <script>
         $(document).ready(function () {
             
-            
+            $("#btn-buscar").click(function () { 
+                
+                // Pega o valor do campo
+                var nome = $("#nome").val();
+                // Concatena com a url. Precisa do http://
+                var url = "http://localhost/2019-Pos-Front-End/aula07_json.php?nome=" + nome;
+                // Prepara os dados a serem enviados
+                var dados = "";
+                // a função getJSON precisa dos parâmetros nesta ordem:
+                // url, dados, function(dados, status){} 
+                // A função vai tratar os dados que chegaram, se chegar.
+                // Se não chegar, ela nem é chamada
+                $.get(url, dados, function(dados, status){
+                    // Só executa este código se houver uma resposta do servidor
+                    if(status == "success"){
+                        // A variável dados é responsável por receber tudo que vem da requisição
+                        alert(dados);
+
+                    }
+
+                });
+                
+            });
             
         });
     </script>
@@ -46,7 +68,7 @@
 
                     <br>
 
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" id="btn-buscar" class="btn btn-primary">
                         <i class="fa fa-search" aria-hidden="true"></i>
                         Pesquisar
                     </button>
