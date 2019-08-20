@@ -45,13 +45,13 @@
                         // Limpa o conteúdo de resultado e deixa somente um <ul>
                         $("#resultado").html("<ul>");
 
-                        $.each(resposta.pessoas, function (indice, item) {
+                        $.each(resposta.cidades, function (indice, item) {
                             // Para cada objeto encontrado no vetor, cria um item novo
                             $("#resultado").append("<li>"+item.id+" - "+item.nome+"</li>");
                              
                         });
                         // Depois de percorrer a lista...
-                        
+
                         // fecha o elemento <ul>
                         $("#resultado").append("</ul>");
 
